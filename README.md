@@ -1,2 +1,2 @@
-# Asignment_03
-Story Telling Via Visualizaion
+# Storytelling Via Visualization
+This repo contains my storytelling project
