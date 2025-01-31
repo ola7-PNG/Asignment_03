@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- METADATA GOES HERE -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="style.css" rel="stylesheet">
+
+    <!-- BOOTSTRAP 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+    <style> .content {
+        padding: 20px;
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+      }
+  
+    header {
+      width: 100%;
+      height: 400px;
+
+  }
+      h2 {
+        color: #333;
+        font-size: 28px;
+      }
+  
+      p {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+  
+      /* Styling for visualizations */
+      .visualization {
+        margin: 40px 0;
+      }
+  
+      .chart-container {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      /* Styling for section titles */
+      .section-title {
+        font-size: 24px;
+        margin-top: 40px;
+        color: #2e3d49;
+      }
+    </style>
+</head>
+
+
+<body>
+<div class="container my-5,mb-4 ">
+    <div class="col-12">
+    </div>
+    <div id="header">
+      <img scr ="Fashion history.jpeg" width="100%">
+    
+    <h1>The Evolution of Women's Fashion</h1>
+  </header>
+
+  <!-- Main Content -->
+  <div class="content">
+
+    <!-- Section 1: Introduction -->
+    <p>Fashion is a mirror of society. Women's fashion, in particular, has undergone dramatic changes over the last century. These changes reflect shifts in social, cultural, and political movements, from the corset era to the era of body positivity. This narrative will explore these transformations, paired with data-driven visualizations to illustrate these shifts.</p>
+
+    <!-- Section 2: The Early 20th Century -->
+    <div class="section-title">1. The Early 20th Century: A Shift Toward Modernity (1900-1920)</div>
+    <p>In the early 1900s, women’s fashion was dominated by tightly structured clothing, with corsets still in widespread use. The corset was a symbol of femininity but also a limitation to movement. However, as the suffrage movement gained momentum, women’s roles began to shift, and so did their clothing. During World War I (1914-1918), women entered the workforce, which created demand for more functional, less restrictive attire.</p>
+    <p>By the mid-1910s, around 40% of women in the U.S. had abandoned corsets in favor of simpler, more comfortable undergarments. This marked a significant step toward the more liberated fashion that would follow.</p>
+
+    <!-- Visualization for 1900-1920 -->
+    <div class="visualization">
+      <div class="chart-container">
+        <h2>Fashion Shift from Corsets to Practical Clothing</h2>
+        <canvas id="fashionTimeline" width="600" height="400"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        var ctx = document.getElementById('fashionTimeline').getContext('2d');
+        var fashionTimeline = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['1900', '1910', '1920'],
+            datasets: [{
+              label: 'Fashion Shift (Corsets to Suffrage)',
+              data: [100, 40, 10],  // 100 = full corset use, 40 = shift to practical clothing, 10 = functional clothing
+              fill: false,
+              borderColor: 'rgba(75, 192, 192, 1)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 120
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      </script>
+    </div>
+
+    <!-- Section 3: The Roaring '20s -->
+    <div class="section-title">2. The Roaring '20s: Flappers and Freedom (1920-1930)</div>
+    <p>The 1920s saw a drastic change in women’s fashion, primarily driven by the rise of the flapper—a symbol of women’s newfound freedom. Skirt lengths rose significantly, and the rigid, formal styles of the previous decades gave way to looser, more relaxed garments. The 1920s marked a time of social rebellion, which found expression in fashion.</p>
+    <p>In 1925, the average skirt length was about 18 inches above the ankle, a sharp contrast to the floor-length skirts of the Victorian era. Sales of women’s dresses surged, with flapper-style dresses increasing by over 60% in popularity by 1925.</p>
+
+    <!-- Visualization for 1920s Skirt Length -->
+    <div class="visualization">
+      <div class="chart-container">
+        <h2>Skirt Length in the 1920s</h2>
+        <canvas id="flapperSkirt" width="600" height="400"></canvas>
+      </div>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      <script>
+        var data = [{
+          type: 'bar',
+          x: ['1920', '1925', '1930'],
+          y: [40, 28, 18],
+          marker: {
+            color: 'rgb(255, 99, 132)',
+          }
+        }];
+        
+        var layout = {
+          title: 'Skirt Length in the 1920s (inches)',
+          xaxis: {
+            title: 'Year'
+          },
+          yaxis: {
+            title: 'Skirt Length (inches)',
+            rangemode: 'tozero'
+          }
+        };
+        
+        Plotly.newPlot('flapperSkirt', data, layout);
+      </script>
+    </div>
+
+    <!-- Section 4: The Mid-Century -->
+    <div class="section-title">3. The Mid-Century: The Rise of the "New Look" (1940-1960)</div>
+    <p>After World War II, women’s fashion saw the return of femininity, thanks to designers like Christian Dior, whose “New Look” in 1947 redefined the silhouette of the era. Dior’s designs featured full skirts, nipped waists, and soft shoulders—an aesthetic that was both luxurious and elegant. This was a sharp contrast to the more practical, utility-based fashion of the wartime years.</p>
+    <p>The "New Look" was an instant success, and it led to a 50% increase in the sales of women’s skirts and dresses by 1950.</p>
+
+    <!-- Section 5: Fashion and Feminism -->
+    <div class="section-title">4. The 1960s-1970s: Feminism Meets Fashion</div>
+    <p>The 1960s and 1970s were defined by a radical shift in women’s fashion, influenced by the feminist movement. The rise of casual, unisex clothing like pantsuits and trousers became the norm. The adoption of pants by women, which had been taboo in previous decades, became a powerful symbol of liberation and equality. By 1970, over 50% of women in the U.S. regularly wore trousers as part of their daily attire.</p>
+
+    <!-- Visualization for Feminism & Pants Adoption -->
+    <div class="visualization">
+      <div class="chart-container">
+        <h2>Pants Adoption by Women (1960-1980)</h2>
+        <canvas id="pantsAdoption" width="600" height="400"></canvas>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        var ctx = document.getElementById('pantsAdoption').getContext('2d');
+        var pantsAdoption = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['1960', '1970', '1980'],
+            datasets: [{
+              label: 'Percentage of Women Wearing Pants',
+              data: [10, 50, 70],  // The adoption of pants by women increases
+              fill: false,
+              borderColor: 'rgba(255, 159, 64, 1)',
+              tension: 0.1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100
+              }
+            },
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          }
+        });
+      </script>
+    </div
+
+</div>
+
+
+</body>
